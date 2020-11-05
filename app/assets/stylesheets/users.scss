@@ -1,0 +1,26 @@
+@import "bootstrap";
+
+input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    width: 170px;
+}
+
+.card {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+}
+
+.cellphone {
+    background-color: #0000000f;
+}
+
+
+.cellphone > .fields {
+    border-bottom: 2px dotted black;
+}

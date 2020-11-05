@@ -1,0 +1,51 @@
+<%= nested_form_for(@user) do |f| %>
+<!--errors-->
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!--end_errors-->
+
+
+  <div class="field card" style="width: 500px;">
+    <!--user-->
+    <h3>user</h3>
+    <%= f.text_field :name, {placeholder: "ユーザーの名前"} %>
+    <div class="cellphone card" style="width: 400px;">
+      <h3>cellphone</h3>
+
+      <!--cellphone-->
+      <%= f.fields_for :cellphones do |f| %>
+        <%= f.text_field :name, {placeholder: "スマホの名前"} %>
+        <%= f.link_to_remove "削除" %>
+        <div class="test"></div>
+          <div class="app card" style="width: 300px;">
+            <h3>app</h3>
+
+            <!--app-->
+            <%= f.fields_for :apps do |f| %>
+              <%= f.text_field :name, {placeholder: "アプリの名前"} %>
+              <%= f.link_to_remove "削除" %>
+            <% end %>
+            <%= f.link_to_add "アプリ追加", :apps %>
+            <!--end_app-->
+
+          </div>
+      <% end %>
+      <%= f.link_to_add "スマホ追加", :cellphones %>
+      <!--end_cellphone-->
+
+    </div>
+    <!--end_user-->
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

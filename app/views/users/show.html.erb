@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<div class="field card" style="width: 500px;">
+    <h3>user</h3>
+    <%= @user.name %>
+    <div class="cellphone card" style="width: 400px;">
+      <h3>cellphone</h3>
+      <% @user.cellphones.each do |cellphone| %>
+        <%= cellphone.name %>
+          <div class="app card" style="width: 300px;">
+            <h3>app</h3>
+            <% cellphone.apps.each do |app| %>
+              <%= app.name %>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+</div>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
